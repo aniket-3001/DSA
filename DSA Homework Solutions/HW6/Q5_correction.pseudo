@@ -1,0 +1,17 @@
+Write a pseudocode for the pushb routine that inserts an element at the
+bottom instead of the top of the stack S. The stack S contains integer values. You are
+not allowed to use additional arrays, linked lists, or any other user-defined data type (i.e.,
+struct). You can use stack_empty, push, and pop routines directly in your
+pseudocode.
+
+pushb(S, v)
+// S is a stack of integers
+// v is an integer value
+// This procedure inserts v at the bottom of the stack S
+pushb(S, v):
+    if stack_empty(S)
+        push(S, v)
+    else
+        val = pop(S)
+        pushb(S, v)
+        push(S, val)

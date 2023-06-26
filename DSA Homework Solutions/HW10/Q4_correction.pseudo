@@ -1,0 +1,22 @@
+DFS(G)
+1. for each vertex u ∈ G.V
+2.     u.color = WHITE
+3.     u.π = NIL
+4. time = 0
+5. for each vertex u ∈ G.V
+6.     if u.color == WHITE
+7.         DFS-VISIT(G, u)
+
+DFS-VISIT(G, u)
+1. time = time + 1
+2. u.d = time
+3. u.color = GRAY
+4. for each vertex v ∈ G.Adj[u]
+5.     if v.color == WHITE
+6.         v.π = u
+7.         DFS-VISIT(G, v)
+8.     else if v.color == BLACK and v.d > u.d // look for the condition in red
+9.         print “forward edge (u, v)”
+10. time = time + 1
+11. u.f = time
+12. u.color = BLACK

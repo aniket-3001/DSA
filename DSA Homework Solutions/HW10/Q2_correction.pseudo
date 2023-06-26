@@ -1,0 +1,14 @@
+1. Algorithm FindPath(G, s, l)
+2.     // G is the input graph
+3.     // s is the source vertex
+4.     // each vertex contains a color field, initially the colors of all vertices are white
+5.     // return true if a non-circular path of length l exists; otherwise, return false
+6.     if l == 0
+7.         return True
+8.     s.color = GRAY
+9.     for each vertex v ∈ G.Adj[s]
+10.         if v.color == WHITE
+11.             if (FindPath(G, v, l-1))
+12.                 return True
+13.     s.color = WHITE
+14.     return False
