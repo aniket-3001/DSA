@@ -1,0 +1,20 @@
+MST_PRIM(G, r)
+// G is the graph G = (V, E, w)
+// r is the root node
+// each vertex v has two fields key and π
+// Output: a set that contains all edges in the MST
+
+1. for each vertex u ∈ G.V
+2.     u.key = ∞
+3.     u.π = NIL
+4. r.key = 0
+5. Q = φ
+6. for each vertex u in G.V
+7.     INSERT(Q, u)
+8. while Q != φ
+9.     u = EXTRACT_MIN(Q)
+10.    for each vertex v in G.Adj[u]
+11.        if v ∈ Q and w(u, v) < v.key
+12.            v.π = u
+13.            v.key = w(u, v)
+14.            DECREASE_KEY(Q, v, w(u, v))

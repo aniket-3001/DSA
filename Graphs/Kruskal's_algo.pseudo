@@ -1,0 +1,19 @@
+MST_KRUSKAL(G)
+// G is the graph G = (V, E, w)
+// Output: a set that contains all edges in the MST
+
+1. A = φ
+2. Let H be a min heap
+3. for each vertex v ∈ G.V
+4.     MAKE_SET(v)
+5. for each vertex u ∈ G.V
+6.     for each v in G.AdjList[u]
+7.         H.insert(pair(u, v))
+8. while |A| != |V| - 1
+9.     (u, v) = H.ExtractMin()
+10.    set_u = FIND_SET(u)
+11.    set_v = FIND_SET(v)
+12.    if set_u != set_v
+13.        A = A ∪ {(u, v)}
+14.        UNION(set_u, set_v)
+15. return A

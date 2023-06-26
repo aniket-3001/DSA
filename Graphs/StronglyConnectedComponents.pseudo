@@ -1,0 +1,47 @@
+STRONGLY-CONNECTED-COMP(G)
+// G is a graph (V, E)
+// each vertex contains five fields: color, d, f, π, scc_id
+// d is discovery time
+// f is finish time
+// π is predecessor in the DFS forest
+// scc_id is the SCC ID of the vertex
+// Output: compute the SCC ID for each vertex
+
+STRONGLY-CONNECTED-COMP(G)
+L = DFS-SCC(G)
+REVERSE-ALL-EDGES(G)
+RESET-COLORS(G)
+scc_id = 0
+foreach vertex v in L
+    if v.color == WHITE
+        scc_id = scc_id + 1
+        v.scc_id = scc_id
+        DFS-VISIT-SCC-ID(G, v)
+
+L = DFS-SCC(G)
+REVERSE-ALL-EDGES(G)
+RESET-COLORS(G)
+scc_id = 0
+foreach vertex v in L
+    if v.color == WHITE
+        scc_id = scc_id + 1
+        v.scc_id = scc_id
+        DFS-VISIT-SCC-ID(G, v)
+
+DFS-VISIT-SCC-ID(G, s)
+// G is a graph (V, E)
+// s is the source vertex
+// each vertex contains five fields: color, d, f, π, scc_id
+// d is discovery time
+// f is finish time
+// π is predecessor in the DFS forest
+// scc_id is the SCC ID of the vertex
+// Output: set the SCC ID of all vertices reachable from s to s.scc_id
+
+DFS-VISIT-SCC-ID(G, s)
+1. s.color = GRAY
+2. for each vertex v ∈ G.Adj[s]
+3.     if v.color == WHITE
+4.         v.scc_id = s.scc_id
+5.         DFS-VISIT-SCC-ID(G, v)
+6. s.color = BLACK

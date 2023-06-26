@@ -1,0 +1,37 @@
+TOPOLOGICAL_SORT(G)
+# Input graph G
+# Output: A linked list that contains vertices in topologically sorted order
+
+L = DFS_TSORT(G)
+# DFS_TSORT computes v.f for each vertex and returns a list that contains vertices
+# in the decreasing order of their finish time
+
+DFS_TSORT(G)
+# G is a graph (V, E)
+# each vertex contains four fields: color, d, f, π
+# d is discovery time, f is finish time, π is predecessor in the DFS forest
+# Output: returns a list that contains all vertices in decreasing order of their finish time
+
+1. for each vertex u ∈ G.V
+2.     u.color = WHITE
+3.     u.π = NIL
+4. time = 0
+5. L = NIL
+6. for each vertex u ∈ G.V
+7.     if u.color == WHITE
+8.         L = DFS-VISIT-TSORT(G, u, L)
+9. return L
+
+DFS-VISIT-TSORT(G, u, L)
+1. time = time + 1
+2. u.d = time
+3. u.color = GRAY
+4. for each vertex v ∈ G.Adj[u]
+5.     if v.color == WHITE
+6.         v.π = u
+7.         L = DFS-VISIT-TSORT(G, v, L)
+8. time = time + 1
+9. u.f = time
+10. u.color = BLACK
+11. L = insert_front(L, u)
+12. return L

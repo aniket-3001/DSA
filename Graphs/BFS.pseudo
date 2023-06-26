@@ -1,0 +1,23 @@
+BFS(G, s)
+// G is a graph
+// s is the source vertex
+// each vertex contains 3 fields: color, d (distance), and π (ancestor)
+1. for each vertex u ∈ G.V - {s}
+2.     u.color = WHITE
+3.     u.π = NIL
+4.     u.d = ∞
+
+5. s.color = GRAY
+6. s.d = 0
+7. s.π = NIL
+8. Q = Φ
+9. ENQUEUE(Q, s)
+10. while Q ≠ Φ
+11.    u = DEQUEUE(Q)
+12.    for each vertex v in G.adj[u]
+13.        if v.color = WHITE
+14.            v.color = GRAY
+15.            v.π = u
+16.            v.d = u.d + 1
+17.            ENQUEUE(Q, v)
+18.    u.color = BLACK

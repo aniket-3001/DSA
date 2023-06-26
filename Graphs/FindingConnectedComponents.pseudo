@@ -1,0 +1,46 @@
+ConnectedComponents(G)
+// G is a graph (V, E)
+// each vertex contains four fields: color, d, π, comp_id
+// Output: set the component_id in each vertex to its component number
+// The connected components are numbered from 1 to count, where count is the number of connected components
+// the component number is the component id
+
+1. ConnectedComponents(G)
+2. // G is a graph (V, E)
+3. // Output: set the component_id in each vertex to its component number
+
+4. for each vertex u ∈ G.V
+5.     u.comp_id = 0
+6. component_id = 0
+7. for each vertex u ∈ G.V
+8.     if u.color == WHITE
+9.         component_id = component_id + 1
+10.        BFS(G, u, component_id)
+
+BFS(G, s, comp_id)
+// G is a graph (V, E)
+// s is the source vertex
+// each vertex contains three fields: color, d, π
+// Output: shortest distance to every vertex v reachable from u in v.d
+// Output: breath-first tree rooted at u, every vertex v contains the predecessor node in field π on the shortest path from u to v
+
+1. BFS(G, s, comp_id)
+2. for each vertex u ∈ G.V – {s}
+3.     u.color = WHITE
+4.     u.d = ∞
+5.     u.π = NIL
+6. s.color = GRAY
+7. s.d = 0
+8. s.π = NIL
+9. Q = φ
+10. ENQUEUE(Q, s)
+11. while Q ≠ φ
+12.    u = DEQUEUE(Q)
+13.    for each vertex v in G.Adj[u]
+14.        if v.color == WHITE
+15.            v.color = GRAY
+16.            v.d = u.d + 1
+17.            v.π = u
+18.            v.comp_id = comp_id
+19.            ENQUEUE(Q, v)
+20.    u.color = BLACK

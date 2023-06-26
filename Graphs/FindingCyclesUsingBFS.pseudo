@@ -1,0 +1,25 @@
+BFS_Cycle(G, s)
+# G is a graph (V, E)
+# s is the source vertex
+# each vertex contains three fields: color, d, π
+# Output: return 1 if the part of graph reachable via s has a cycle; otherwise, return 0
+
+1. BFS_cycle(G, s)
+2. for each vertex u ∈ G.V – {s}
+3.     u.color = WHITE
+4.     u.π = NIL
+5. s.color = GRAY
+6. s.π = NIL
+7. Q = φ
+8. ENQUEUE(Q, s)
+9. while Q ≠ φ
+10.    u = DEQUEUE(Q)
+11.    for each vertex v in G.Adj[u]
+12.        if v.color == WHITE
+13.            v.color = GRAY
+14.            v.π = u
+15.            ENQUEUE(Q, v)
+16.        else if u.π != v
+17.            return 1
+18.    u.color = BLACK
+19. return 0

@@ -1,0 +1,28 @@
+DIJKSTRA(G, s)
+// G is a graph (V, E, w)
+// s is the source vertex
+// each vertex contains two fields: d and π
+// d contains the distance of the best known path at a given point
+// π contains the predecessor vertex on the best known path at a given point
+// Output: shortest distance to each vertex v from s in v.d; and the predecessor on the shortest path to vertex v in v.π
+
+1. INITIALIZE-SINGLE-SOURCE(G, s)
+2. for each vertex v ∈ G.V
+3.     v.d = ∞
+4.     v.π = NIL
+5. s.d = 0
+
+DIJKSTRA(G, u)
+1. INITIALIZE-SINGLE-SOURCE(G, s)
+2. S = φ // S is a set
+3. Q = φ // Q is a min-heap
+4. for each vertex u ∈ G.V
+5.     INSERT(Q, u)
+6. while Q != φ
+7.     u = EXTRACT-MIN(Q)
+8.     S = S ∪ {u}
+9.     for each vertex v in G.Adj[u]
+10.         if v.d > u.d + G.w(u, v)
+11.             v.d = u.d + G.w(u, v)
+12.             v.π = u
+13.             DECREASE-KEY(Q, v, v.d)

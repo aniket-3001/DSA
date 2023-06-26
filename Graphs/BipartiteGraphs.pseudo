@@ -1,0 +1,27 @@
+BFS_For_Bipartite(G, s)
+# G is a graph (V, E)
+# s is the source vertex
+# each vertex contains three fields: color, d, π
+# Output: return 1 if the graph is bipartite; otherwise, return 0
+
+1. for each vertex u ∈ G.V - {s}
+2.     u.color = WHITE
+3.     u.d = ∞
+4.     u.π = NIL
+5. s.color = GRAY
+6. s.d = 0
+7. s.π = NIL
+8. Q = φ
+9. ENQUEUE(Q, s)
+10. while Q ≠ φ
+11.     u = DEQUEUE(Q)
+12.     for each vertex v in G.Adj[u]
+13.         if v.color == WHITE
+14.             v.color = GRAY
+15.             v.d = u.d + 1
+16.             v.π = u
+17.             ENQUEUE(Q, v)
+18.         else if u.d == v.d
+19.             return 0
+20.     u.color = BLACK
+21. return 1

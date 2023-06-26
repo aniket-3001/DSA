@@ -1,0 +1,30 @@
+Give an algorithm to print all forward, back and cross edges while traversing a directed graph
+using DFS.
+
+DFS(G)
+1. for each vertex u ∈ G.V
+2.     u.color = WHITE
+3.     u.π = NIL
+4. time = 0
+5. for each vertex u ∈ G.V
+6.     if u.color == WHITE
+7.         DFS-VISIT(G, u)
+
+DFS-VISIT(G, u)
+1. time = time + 1
+2. u.d = time
+3. u.color = GRAY
+4. for each vertex v ∈ G.Adj[u]
+5.     if v.color == WHITE
+6.         v.π = u
+7.         DFS-VISIT(G, v)
+8.     else if v.color == GRAY // back edge condition
+9.         print "back edge (u, v)"
+10.    else if v.color == BLACK and v.d > u.d // forward edge condition
+11.        print "forward edge (u, v)"
+12.    else if v.color == BLACK and v.d < u.d // cross edge condition
+13.        print "cross edge (u, v)"
+14. time = time + 1
+15. u.f = time
+16. u.color = BLACK
+
