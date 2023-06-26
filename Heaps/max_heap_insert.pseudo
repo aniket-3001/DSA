@@ -1,0 +1,22 @@
+struct Heap {
+    int *arr;
+    int capacity; // maximum size of heap
+    int heap_size; // number of elements in the heap
+};
+
+Max_Heap_insert(H, x)
+// H is a reference to the heap of type struct Heap
+// x is an integer input that needs to be inserted
+// Output: insert x in the heap
+
+    if H->heap_size == H->capacity
+        perror("heap overflow")
+
+    H->heap_size = H->heap_size + 1
+    H->arr[H->heap_size] = x
+    i = H->heap_size
+
+    while i > 1 and H->arr[PARENT(i)] < H->arr[i]
+        exchange H->arr[i] with H->arr[PARENT(i)]
+        i = PARENT(i)
+

@@ -1,0 +1,7 @@
+Max_Heap_Max(H)
+// H is a reference to the heap of type struct Heap
+// Output: return the value of the maximum element
+
+    if H->heap_size == 0
+        perror(“Heap underflow”)
+    return H->arr[1]

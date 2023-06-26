@@ -1,0 +1,11 @@
+Max_Heap_Increase_Key(H, i, keyval)
+// H is a reference to the heap of type struct Heap
+// i is the index of the node to be updated
+// keyval is the new value of the node at index i
+// Output: value of node at index i is increased and all nodes satisfy the max heap property
+
+    if H->arr[i] < keyval
+        H->arr[i] = keyval
+        while i > 1 and H->arr[PARENT(i)] < H->arr[i]
+            exchange H->arr[i] with H->arr[PARENT(i)]
+            i = PARENT(i)

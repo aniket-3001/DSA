@@ -1,0 +1,7 @@
+HeapSort(A)
+// A is an array of n elements
+    Build_Max_Heap(A)
+    for i = n down to 2
+        exchange A[1] with A[i]
+        A.heap_size = A.heap_size - 1
+        Max_Heapify(A, 1)

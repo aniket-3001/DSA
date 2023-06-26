@@ -1,0 +1,9 @@
+Max_Heap_Extract_Max(H)
+// H is a reference to the heap of type struct Heap
+// Output: delete the maximum element and return its value
+
+    max = Max_Heap_Max(H)
+    H->arr[1] = H->arr[H->heap_size]
+    H->heap_size = H->heap_size – 1
+    Max_Heapify(H, 1)
+    return max

@@ -1,0 +1,19 @@
+Max_Heapify(H, i)
+// H is a reference to the heap of type struct Heap
+// i is the index at which the Max_Heapfify needs to be performed
+// Output: node at index i satisfies the max heap property
+
+    l = LEFT(i)
+    r = RIGHT(i)
+
+    if l <= H->heap_size and H->arr[l] > H->arr[i]
+        largest = l
+    else 
+        largest = i
+
+    if r <= H->heap_size and H->arr[r] > H->arr[largest]
+        largest = r
+
+    if largest != i
+        exchange H->arr[i] with H->arr[largest]
+        Max_Heapify(H, largest)
