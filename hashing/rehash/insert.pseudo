@@ -1,0 +1,18 @@
+HASH_INSERT(h, e, m)
+// h is the hash table
+// m is the total number of slots in the hash table
+// e is the element that has two fields: key and value
+// Output: Insert e in the hash table h
+
+    idx = hash_function(e.key, m)
+    i = 0
+    while i < m
+        if h[idx] == NIL or h[idx] == DEL
+            h[idx] = e
+            return
+        idx = (idx + 1) % m
+        i = i + 1
+        
+    // If the hash table is full, perform rehashing
+    h = REHASH(h, 2 * m) // Adjust the new size as needed
+    HASH_INSERT(h, e, 2 * m) // Insert the element in the newly rehashed hash table

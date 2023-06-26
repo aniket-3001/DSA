@@ -1,0 +1,15 @@
+HASH_INSERT(h, e, m)
+// h is the hash table
+// m is the total number of slots in the hash table
+// e is the element that has two fields: key and value
+// Output: Insert e in the hash table h and return the index in the hash table
+
+    idx = hash_function(e.key, m)
+    i = 0
+    while i < m
+        if h[idx] == NIL or h[idx] == DEL
+            h[idx] = e
+            return idx
+        idx = (idx + 1) % m
+        i = i + 1
+    error “hash table overflow”

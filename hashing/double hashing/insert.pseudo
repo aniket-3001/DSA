@@ -1,0 +1,16 @@
+HASH_INSERT(h, e, m)
+// h is the hash table
+// m is the total number of slots in the hash table
+// e is the element that has two fields: key and value
+// Output: Insert e in the hash table h
+
+    i = hash1(e.key) // Primary hash function
+    o = hash2(e.key) // Secondary hash function
+    j = 1
+    while j <= m
+        idx = (i + (j * o)) % m
+        if h[idx] == NIL or h[idx] == DEL
+            h[idx] = e
+            return
+        j = j + 1
+    error "hash table overflow"

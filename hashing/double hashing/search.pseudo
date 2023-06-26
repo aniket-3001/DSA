@@ -1,0 +1,18 @@
+HASH_SEARCH(h, k, m)
+// h is the hash table
+// m is the total number of slots in the hash table
+// k is the key being searched
+// Output: Return NIL if the element is not stored in the table; otherwise, return the stored element
+
+    i = hash1(k) // Primary hash function
+    o = hash2(k) // Secondary hash function
+    j = 1
+    while j <= m
+        idx = (i + (j * o)) % m
+        if h[idx] != NIL
+            if h[idx] != DEL and h[idx].key == k
+                return h[idx]
+        else
+            return NIL
+        j = j + 1
+    return NIL

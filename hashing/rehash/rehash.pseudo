@@ -1,0 +1,16 @@
+REHASH(oldHash, newSize)
+// oldHash is the old hash table
+// newSize is the new size of the hash table
+
+    newHash = new HashTable[newSize]
+
+    for each element in oldHash
+        if element is not deleted
+            idx = hash_function(element.key, newSize)
+            while newHash[idx] is not empty
+                idx = (idx + 1) % newSize
+            newHash[idx] = element
+
+    delete oldHash
+
+    return newHash

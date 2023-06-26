@@ -1,0 +1,17 @@
+HASH_INSERT(h, e, m)
+// h is the hash table
+// m is the total number of slots in the hash table
+// e is the element that has two fields: key and value
+// Output: Insert e in the hash table h and return the index in the hash table
+
+    idx = hash_function(e.key, m)
+    i = 0
+    offset = 0
+    while i < m
+        new_idx = (idx + offset^2) % m
+        if h[new_idx] == NIL or h[new_idx] == DEL
+            h[new_idx] = e
+            return new_idx
+        i = i + 1
+        offset = i  // increment offset using quadratic progression
+    error "hash table overflow"

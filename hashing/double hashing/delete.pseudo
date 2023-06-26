@@ -1,0 +1,18 @@
+HASH_DELETE(h, k, m)
+// h is the hash table
+// m is the total number of slots in the hash table
+// k is the key that needs to be deleted
+// Output: Delete an entry that contains k
+
+    i = hash1(k) // Primary hash function
+    o = hash2(k) // Secondary hash function
+    j = 1
+    while j <= m
+        idx = (i + (j * o)) % m
+        if h[idx] != NIL
+            if h[idx] != DEL and h[idx].key == k
+                h[idx] = DEL
+                return
+        else
+            return
+        j = j + 1
