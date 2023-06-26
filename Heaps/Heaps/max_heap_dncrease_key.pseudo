@@ -1,0 +1,10 @@
+Max_Heap_Decrease_Key(H, i, keyval)
+    // H is a reference to the heap of type struct Heap
+    // i is the index of the node to be updated
+    // keyval is the new value of the node at index i
+    
+    if H->arr[i] > keyval
+        H->arr[i] = keyval
+        while i > 1 and H->arr[PARENT(i)] < H->arr[i]
+            exchange H->arr[i] with H->arr[PARENT(i)]
+            i = PARENT(i)
