@@ -1,0 +1,13 @@
+Huffman_Encoding(C):
+// Input: C is an array of n nodes; each node contains a character and its corresponding frequency, and NULL left and right fields
+// Output: The root of a tree representing the Huffman codes
+
+1. n = Num_Elements(C)
+2. Q = Build_Min_Heap(C)
+3. for i = 1 to n - 1 do
+4.     z = allocate_node() // allocate a node with empty fields
+5.     z.left = x = Extract_Min(Q)
+6.     z.right = y = Extract_Min(Q)
+7.     z.freq = x.freq + y.freq
+8.     Insert(Q, z)
+9. return Extract_Min(Q)

@@ -1,0 +1,10 @@
+Huffman_Decoding(root, in):
+// Input: root is the root of the tree, in points to next bit in the encoded input sequence
+// Output: decodes and prints one character, returns the pointer to the first bit of the next character in the encoded sequence
+1. if (is_leaf(root)) then
+2.     print(root->val)
+3.     return in
+4. if (in[0] = 0) then
+5.     return Huffman_Decoding(root->left, in+1)
+6. else
+7.     return Huffman_Decoding(root->right, in+1)
