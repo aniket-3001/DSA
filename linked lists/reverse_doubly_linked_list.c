@@ -7,22 +7,32 @@ struct node {
     struct node* next;
 };
 
-struct node* rev_list(struct node* head) {
-    struct node* ptr1 = head;
-    struct node* ptr2 = ptr1 -> next;
+struct node *rev_list(struct node *head)
+{
+    struct node *curr_elem = head;       // corresponds to the current element in our DLL iteration
+    struct node *prev_elem = NULL;       // corresponds to the element preceeding curr_elem
+    struct node *next_elem = head->next; // corresponds to the element proceeding curr_elem
+    struct node *temp;                   // temporary for storing the variable next to curr since we break the link
 
-    ptr1 -> next = NULL;
-    ptr1 -> prev = ptr2;
+    while (curr_elem->next != NULL)
+    {
+        temp = curr_elem->next;
 
-    while (ptr2 != NULL) {
-        ptr2 -> prev = ptr2 -> next;
-        ptr2 -> next = ptr1;
-        ptr1 = ptr2;
-        ptr2 = ptr2 -> prev;
+        // updating the links
+        curr_elem->prev = next_elem;
+        curr_elem->next = prev_elem;
+
+        next_elem = temp->next;
+        prev_elem = temp->prev;
+
+        curr_elem = temp;
     }
 
-    head = ptr1;
-    return head;
+    // updating links for the last element since it couldn't be done in the loop itself without having to return in between
+    curr_elem->prev = next_elem;
+    curr_elem->next = prev_elem;
+
+    return curr_elem;
 }
 
 struct node* create_list(struct node* head) {
