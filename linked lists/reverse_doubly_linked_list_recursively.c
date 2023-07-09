@@ -1,3 +1,5 @@
+// searched the whole of yt to get a nice recurive implementation of this shit, however all tutorials turned out to be trash. I implemented the following by taking inspiration from the code of reversing singly linked list. Do perform a dry run, you would be able to easily understand this code if you've understood the one for the singly LL.
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -7,19 +9,29 @@ struct node {
     struct node* prev;
 };
 
-struct node* rev_list(struct node* head) {
-    if (head == NULL || head -> next == NULL) // Base case: empty list or list with one element
+struct node *rev_list(struct node *head)
+{
+    if (head == NULL) // Base case: empty list or list with one element
         return head;
 
-    struct node* rest = rev_list(head -> next); // Recursively reverse the rest of the list
+    if (head->next == NULL)
+    {
+        head->next = head->prev;
+        head->prev = NULL;
+        return head;
+    }
 
-    head -> prev = head -> next; // Swap prev and next pointers for the current node
-    head->next = rest;
+    struct node *next_elem = head->next;
+    struct node *prev_elem = head->prev;
 
-    if (rest != NULL)
-        rest -> prev = head;
+    head->next = NULL;
+    head->prev = NULL;
 
-    return head; // Return the new head of the reversed list
+    struct node *RestReverse = rev_list(next_elem);
+
+    head->prev = next_elem;
+    head->next = prev_elem;
+    return RestReverse;
 }
 
 struct node* create_list(struct node* head) {
