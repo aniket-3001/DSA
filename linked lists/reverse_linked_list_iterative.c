@@ -22,8 +22,8 @@ struct node *rev_list(struct node *head)
         curr = temp;
     }
 
-    curr = prev;
-    return curr;
+    // Take care that when we reach the last iteration, i.e when curr corresponds to the last element of our LL, curr would get updated to NULL while prev would store the last element which is also the new head of our LL and needs to be returned, hence, return prev
+    return prev; // new head
 }
 
 
