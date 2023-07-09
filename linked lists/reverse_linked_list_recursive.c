@@ -1,3 +1,5 @@
+// merko yeh code khud samajh nhi aaya 🗿
+
 #include <stdio.h>
 #include <stdlib.h>
 
