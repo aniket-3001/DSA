@@ -8,19 +8,22 @@ struct node {
 };
 
 
-struct node* rev_list(struct node* head) {
-    struct node *temp1, *temp2;
-    temp1 = NULL;
+struct node *rev_list(struct node *head)
+{
+    struct node *curr = head; // corresponds to the current element in our LL iteration
+    struct node *prev = NULL; // corresponds to the element preceeding curr
+    struct node *temp;        // temporary for storing the variable next to curr since we break the link
 
-    while (head != NULL) {
-        temp2 = head -> next;
-        head -> next = temp1;
-        temp1 = head;
-        head = temp2;
+    while (curr != NULL)
+    {
+        temp = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = temp;
     }
 
-    head = temp1;
-    return head;
+    curr = prev;
+    return curr;
 }
 
 
